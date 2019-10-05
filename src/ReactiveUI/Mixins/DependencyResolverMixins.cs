@@ -44,7 +44,7 @@ namespace ReactiveUI
 
             var assemblyName = new AssemblyName(fdr.AssemblyQualifiedName.Replace(fdr.FullName + ", ", string.Empty));
 
-            extraNs.ForEach(ns => ProcessRegistrationForNamespace(ns, assemblyName, resolver));
+            extraNs.Where(x => File.Exists(x)).ForEach(ns => ProcessRegistrationForNamespace(ns, assemblyName, resolver));
         }
 
         /// <summary>
